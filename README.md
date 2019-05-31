@@ -4,7 +4,6 @@
 
 OV7670
 
-<sub>
 ARC: 2x18 Pin Extension Header
          
 SIOC   ->    I2C0_SCL (need pull-up 10K resistor)
@@ -29,5 +28,4 @@ RESET  -> +3.3V
 GND    -> GND
 
 PWDN   -> GND
-<sub>
 
