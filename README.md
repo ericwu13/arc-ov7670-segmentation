@@ -2,8 +2,6 @@
 
 ## ov7670 pin connection
 
-OV7670
-
 ARC: 2x18 Pin Extension Header
          
 SIOC   ->    I2C0_SCL (need pull-up 10K resistor)
