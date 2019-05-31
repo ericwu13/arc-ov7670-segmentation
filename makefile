@@ -1,7 +1,7 @@
 # Application name
-APPL ?= i2c_master 
+APPL ?= ov7670-segmentation 
 BOARD = iotdk
-#EXT_DEV_LIST += sensor/imu/mpu9250
+
 TOOLCHAIN = gnu
 #
 # root dir of embARC
