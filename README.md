@@ -29,7 +29,7 @@ This project was successful in achieving a two-wheeled autonomous robot based on
 ### Required Software
 - ARC GNU Toolset 2019
 - Serial port terminal, such as putty, tera-term or minicom
-- Synoposys Machine Learning Library
+- embARC MLI
 
 ### Hardware Connection
 1. Connect OV7670 camera module to ARC following below instructions
