@@ -53,7 +53,24 @@ This project was successful in achieving a two-wheeled autonomous robot based on
 
 ### Hardware Connection
 1. Connect BLE HC-05 module to Pmod J1(Using UART interface)
-2. Connect IMU MPU6050 module to Pmode J2(Using I2C interface)
+2. Connect OV7670 camera module to ARC following below instructions
+
+        # ARC: 2x18 Pin Extension Header
+        SIOC   ->    I2C0_SCL (need pull-up 10K resistor)
+        SIOD   ->    I2C0_SDA (need pull-up 10K resistor)
+
+        # ARC: Arduino PIN
+        VSYBC  ->    arduino IO0
+        PCLK   ->    arduino IO1
+        XCLK   ->    arduino IO3
+        D7\~D0  ->    arduino IO4\~IO11
+
+        3V3    -> +3.3V
+        RESET  -> +3.3V
+        GND    -> GND
+        PWDN   -> GND
+
+
 3. Connect Expansion Board to Pmode J6, J5(Using J6 SPI interface, J5 using for mechanical fixing)
 
 ## User Manual
@@ -175,27 +192,3 @@ The file **physParmas.h** contains macro define for data factor and customize ty
 
 ### ov7670 pin connection
 
-ARC: 2x18 Pin Extension Header
-         
-SIOC   ->    I2C0_SCL (need pull-up 10K resistor)
-
-SIOD   ->    I2C0_SDA (need pull-up 10K resistor)
-
-ARC: Arduino PIN
-
-VSYBC  ->    arduino IO0
-
-PCLK   ->    arduino IO1
-
-XCLK   ->    arduino IO3
-
-D7\~D0  ->    arduino IO4\~IO11
-
-
-3V3    -> +3.3V
-
-RESET  -> +3.3V
-
-GND    -> GND
-
-PWDN   -> GND
