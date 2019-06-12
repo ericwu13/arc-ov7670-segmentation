@@ -58,4 +58,17 @@ This project was successful in achieving a two-wheeled autonomous robot based on
         PWDN   -> GND
 
 ## User Manual
+[5]: https://www.synopsys.com/dw/ipdir.php?ds=arc_em_starter_kit    "DesignWare ARC EM Starter Kit(EMSK)"
+[6]: http://www.electronics-lab.com/?s=HC-05 "BLE HC-05 module"
+[7]: https://www.sparkfun.com/products/retired/198 "USB To TTL module"
+[8]: http://playground.arduino.cc/Main/MPU-6050 "IMU MPU6050 module"
+[9]: http://www.landzo.cn/forum.php?mod=viewthread&tid=10541&extra=page%3D1&page=1 "Motor Driver"
+[10]: http://www.electronics-lab.com/?s=7805 "Voltage Conversion 7805 module"
+[11]: ./doc/screenshot/Platform.jpg "Robot Platform"
+[12]: https://www.freertos.org/a00106.html "FreeRTOS API"
+[13]: http://embarc.org/embarc_osp/doc/embARC_Document/html/page_example.html " embARC Example User Guide"
+[14]: http://v.youku.com/v_show/id_XMzYzMDkzNzg3Ng==.html?spm=a2h3j.8428770.3416059.1
+
+
+### ov7670 pin connection
 
