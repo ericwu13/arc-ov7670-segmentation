@@ -63,7 +63,7 @@ This project was successful in achieving a two-wheeled autonomous robot based on
         VSYBC  ->    arduino IO0
         PCLK   ->    arduino IO1
         XCLK   ->    arduino IO3
-        D7\~D0  ->    arduino IO4\~IO11
+        D7~D0  ->    arduino IO4~IO11
 
         3V3    -> +3.3V
         RESET  -> +3.3V
