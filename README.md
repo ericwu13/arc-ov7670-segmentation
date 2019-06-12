@@ -19,7 +19,7 @@ This project was successful in achieving a two-wheeled autonomous robot based on
 ### Function
 
 ### System Architecture
-![system architecture][3]
+![][3]
 
 ## Hardware and Software Setup
 ### Required Hardware
