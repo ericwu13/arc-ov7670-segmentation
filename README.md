@@ -23,6 +23,9 @@ We aim to integrate image segmentation system with a robotic car and Bluetooth r
 ### Required Hardware
 - [ARC IoT Development Kit][1]
 - [OV7670 Camera Module][2]
+- [Arduino]
+- [HC-05]
+- [Robot Car]
 
 ### Required Software
 - ARC GNU Toolset 2019
@@ -46,6 +49,8 @@ We aim to integrate image segmentation system with a robotic car and Bluetooth r
         RESET  -> +3.3V
         GND    -> GND
         PWDN   -> GND
+
+2. Connect HC-05 to arduino 
 
 ## User Manual
 [1]: https://embarc.org/embarc_osp/doc/build/html/board/iotdk.html "ARC IoT Development Kit"
