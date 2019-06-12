@@ -52,3 +52,4 @@ This project was successful in achieving a two-wheeled autonomous robot based on
 ## User Manual
 [1]: https://embarc.org/embarc_osp/doc/build/html/board/iotdk.html "ARC IoT Development Kit"
 [2]: https://www.voti.nl/docs/OV7670.pdf "OV7670 Camera Module"
+[3]: ./doc/system.png "System Architecture"
