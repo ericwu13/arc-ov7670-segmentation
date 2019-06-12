@@ -23,13 +23,13 @@ This project was successful in achieving a two-wheeled autonomous robot based on
 
 ## Hardware and Software Setup
 ### Required Hardware
-- 1 [ARC IoT Development Kit][1]
-- 2 [OV7670 Camera Module][2]
+- [ARC IoT Development Kit][1]
+- [OV7670 Camera Module][2]
 
 ### Required Software
-- ARC GNU Toolset 2017.03
+- ARC GNU Toolset 2019
 - Serial port terminal, such as putty, tera-term or minicom
-- 
+- Synoposys Machine Learning Library
 
 ### Hardware Connection
 1. Connect OV7670 camera module to ARC following below instructions
