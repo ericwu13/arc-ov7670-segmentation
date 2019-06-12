@@ -14,9 +14,7 @@ This application, which implements a image semantic segmentation on ARC IoT boar
 	* [Run This Application](#run-this-application)
 
 ## Introduction
-This project was successful in achieving a two-wheeled autonomous robot based on the inverted pendulum model.EMSK works as controller, it will deal with sensor datas and interact with user via bluetooth. We can view all data on serial terminal, and sent instructions to the robot to change its motion mode.
-
-### Function
+We aim to integrate image segmentation system with a robotic car and Bluetooth remote control remote control mode, we control the car through an Android app
 
 ### System Architecture
 ![][3]
