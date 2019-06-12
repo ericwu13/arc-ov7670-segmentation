@@ -3,7 +3,6 @@
 This application, which implements a image semantic segmentation on ARC IoT board, is designed to show how to use camera and Machine Learning in embARC.
 
 * [Introduction](#introduction)
-	* [Function](#function)
 	* [System Architecture](#system-architecture)
 * [Hardware and Software Setup](#hardware-and-software-setup)
 	* [Required Hardware](#required-hardware)
