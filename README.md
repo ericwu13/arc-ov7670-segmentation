@@ -1,7 +1,6 @@
 # Image Segmentation Robot System
 
-This application, which implements a mobile inverted pendulum robots, is designed to show how to develop a **Motion Control** using embARC.
-VIDEO URL: [DEMO VIDEO][14]
+This application, which implements a image semantic segmentation on ARC IoT board, is designed to show how to use camera and Machine Learning in embARC.
 
 * [Introduction](#introduction)
 	* [Function](#function)
@@ -18,18 +17,6 @@ VIDEO URL: [DEMO VIDEO][14]
 This project was successful in achieving a two-wheeled autonomous robot based on the inverted pendulum model.EMSK works as controller, it will deal with sensor datas and interact with user via bluetooth. We can view all data on serial terminal, and sent instructions to the robot to change its motion mode.
 
 ### Function
--  **Upright**
-	The robot can keep itself upright even if there is a great disturbances.
-	[![upright.gif](https://s8.postimg.cc/4lsw5oi1h/upright.gif)](https://postimg.cc/image/6qd96rjo1/)
--  **Linear Motion**
-	Under upright condition, the robot has excellent ability to linear motion.
-	[![linear_motion.gif](https://s8.postimg.cc/fwvjtyovp/linear_motion.gif)](https://postimg.cc/image/gmec6bpf5/)
--  **Angular Rotation**
-	Not only linear motion, but also angular rotation can be implemented.
-	[![angular_rotation.gif](https://s8.postimg.cc/6qd96m6rp/angular_rotation.gif)](https://postimg.cc/image/jhrfd4gjl/)
--  **Over the Seesaw**
-	 Based on the above, the robot can autonomously through the seesaw
- 	[![over_the_seesaw.gif](https://s8.postimg.cc/wlwzpvt6t/over_the_seesaw.gif)](https://postimg.cc/image/hd72c3zi9/)
 
 ### System Architecture
 ![system architecture][4]
@@ -50,10 +37,10 @@ This project was successful in achieving a two-wheeled autonomous robot based on
 ### Required Software
 - ARC GNU Toolset 2017.03
 - Serial port terminal, such as putty, tera-term or minicom
+- 
 
 ### Hardware Connection
-1. Connect BLE HC-05 module to Pmod J1(Using UART interface)
-2. Connect OV7670 camera module to ARC following below instructions
+1. Connect OV7670 camera module to ARC following below instructions
 
         # ARC: 2x18 Pin Extension Header
         SIOC   ->    I2C0_SCL (need pull-up 10K resistor)
@@ -69,9 +56,6 @@ This project was successful in achieving a two-wheeled autonomous robot based on
         RESET  -> +3.3V
         GND    -> GND
         PWDN   -> GND
-
-
-3. Connect Expansion Board to Pmode J6, J5(Using J6 SPI interface, J5 using for mechanical fixing)
 
 ## User Manual
 ### Before running this application
