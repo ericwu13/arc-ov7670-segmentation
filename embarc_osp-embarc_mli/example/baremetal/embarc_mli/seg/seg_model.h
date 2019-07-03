@@ -41,7 +41,7 @@
 #define MODEL_BIG 1
 
 // Input tensor. To be filled with input image by user befor calling inference function (cifar10_cf_net).
-#define IN_POINTS (120* 160 * 3)
+#define IN_POINTS (64 * 64 * 3)
 extern mli_tensor * const seg_net_input;
 
 // Output tensor for model. Will be filled with probabilities vector by model
