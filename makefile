@@ -1,5 +1,5 @@
 # Application name
-APPL ?= ov7670-segmentation 
+APPL ?= arc-ov7670--segmentation 
 BOARD = iotdk
 
 TOOLCHAIN = gnu

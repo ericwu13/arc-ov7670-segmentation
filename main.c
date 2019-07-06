@@ -38,33 +38,83 @@
 #define PIN_PCLK 1
 #define PIN_DATA 0xff
 
+#define READ_5  while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
+
+#define READ_6  while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
+
+#define NOREAD_5  while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
+
+#define NOREAD_6  while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);\
+                while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));\
+                while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
+                (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
 
 DEV_GPIO_PTR clk_ptr = NULL;
 DEV_GPIO_PTR data_ptr = NULL;
-static bool captureRequest = false;
-static bool captureStart = true;
-static bool read = false;
 static int cnt = 0;
 
+static uint8_t image[64*64*3];
+
 static void captureImg(uint16_t width, uint16_t height);
-void vsyncHandler() {
-    cnt ++;
-	if (captureRequest) {
-		captureRequest = false;
-		captureStart = true;
-	} else {
-        captureStart = false;
-    }
-}
-
-void pclkHandler() {
-    read = true;
-}
-
-void captureNext() {
-	captureRequest = true;
-    captureStart = false;
-}
 
 DEV_UART *console_uart;
 int main(void) {
@@ -100,18 +150,6 @@ int main(void) {
 		clk_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT,
 								(void *)(1 << PIN_VSYNC));
 	}
-    /*DEV_GPIO_BIT_ISR bit_isr_vsync;
-	DEV_GPIO_INT_CFG int_cfg_vsync;
-    int_cfg_vsync.int_bit_mask = 1 << PIN_VSYNC;
-	int_cfg_vsync.int_bit_type = GPIO_INT_BIT_EDGE_TRIG(PIN_VSYNC);
-	int_cfg_vsync.int_bit_polarity = GPIO_INT_BIT_POL_FALL_EDGE(PIN_VSYNC);
-	int_cfg_vsync.int_bit_debounce = GPIO_INT_BIT_DIS_DEBOUNCE(PIN_VSYNC);
-	clk_ptr->gpio_control(GPIO_CMD_SET_BIT_INT_CFG, (void *)&int_cfg_vsync);
-
-	bit_isr_vsync.int_bit_ofs = PIN_VSYNC;
-	bit_isr_vsync.int_bit_handler = vsyncHandler;
-	//bit_isr_vsync.int_bit_handler = pclkHandler;
-	clk_ptr->gpio_control(GPIO_CMD_SET_BIT_ISR, &bit_isr_vsync);*/
 
     io_arduino_config(ARDUINO_PIN_AD1, ARDUINO_GPIO, IO_PINMUX_ENABLE); // pclk
 	if (clk_ptr->gpio_open((1 << PIN_PCLK)) == E_OPNED) {
@@ -120,18 +158,6 @@ int main(void) {
 		clk_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT,
 								(void *)(1 << PIN_PCLK));
 	}
-    /*DEV_GPIO_BIT_ISR bit_isr_pclk;
-	DEV_GPIO_INT_CFG int_cfg_pclk;
-    int_cfg_pclk.int_bit_mask = 1 << PIN_PCLK;
-	int_cfg_pclk.int_bit_type = GPIO_INT_BIT_EDGE_TRIG(PIN_PCLK);
-	int_cfg_pclk.int_bit_polarity = GPIO_INT_BIT_POL_FALL_EDGE(PIN_PCLK);
-	int_cfg_pclk.int_bit_debounce = GPIO_INT_BIT_DIS_DEBOUNCE(PIN_PCLK);
-	clk_ptr->gpio_control(GPIO_CMD_SET_BIT_INT_CFG, (void *)&int_cfg_pclk);
-
-	bit_isr_pclk.int_bit_ofs = PIN_PCLK;
-	bit_isr_pclk.int_bit_handler = pclkHandler;
-	//bit_isr_pclk.int_bit_handler = vsyncHandler;
-	clk_ptr->gpio_control(GPIO_CMD_SET_BIT_ISR, &bit_isr_pclk);*/
 
     io_arduino_config(ARDUINO_PIN_4, ARDUINO_GPIO, IO_PINMUX_ENABLE);  // d0
     io_arduino_config(ARDUINO_PIN_5, ARDUINO_GPIO, IO_PINMUX_ENABLE);  // d1
@@ -173,8 +199,8 @@ int main(void) {
     setColorSpace(RGB565);
 
     //EMBARC_PRINTF("Cam init done\n");
-    // writeReg(0x11, 9) //2
     writeReg(0x11, 9);
+    // writeReg(0x11, 10);
 
     // board_delay_ms(10000, 0);
     // writeReg(REG_COM8, 0);
@@ -190,49 +216,98 @@ int main(void) {
 
 
 static void captureImg(uint16_t width, uint16_t height) {
-    uint8_t buf[320];
-    //captureNext();
+
     EMBARC_PRINTF("RDY");
-    uint8_t data = 0;
+    uint8_t buf[128];
+
     while(!(_arc_aux_read(0x80017e50) & (1 << PIN_VSYNC)));
     while((_arc_aux_read(0x80017e50) & (1 << PIN_VSYNC)));
-   
+
+    uint8_t* imagePtr = image;
+    for(int h = 0; h < 28; ++h) {
+        for(int w = 0; w < 320; ++w) {
+            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
+        }
+    }
+
     
-    
-    while(height--) {
+    for(int h = 28; h < 92; ++h) {
         uint8_t* readPtr = buf;
         uint8_t* writePtr = buf;
-        int readTime = 64;
-        int writeTime = 320 - 64;
-        while(readTime--) {
+        for(int w = 0; w < 96; ++w) {
             while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
             while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
-
-            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
-
-            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
-
-            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
-
-            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
-            *readPtr++ = (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
-            
-            console_uart->uart_write((void*)writePtr++, 1);
+            (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
         }
-        while(writeTime--) {
-            console_uart->uart_write((void*)writePtr++, 1);
+        for(int w = 0; w < 8; ++w) {
+            READ_5;
+
+            *imagePtr = ((*writePtr) >> 3);
+            console_uart->uart_write((void*) imagePtr++, 1);
+
+            READ_5;
+
+            *imagePtr = (((*writePtr++)& 7) << 3);
+            *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
+            console_uart->uart_write((void*) imagePtr++, 1);
+
+            READ_6;
+
+            *imagePtr = (*writePtr++) & 31;
+            console_uart->uart_write((void*) imagePtr++, 1);
+        }
+        for(int w = 0; w < 3; ++w) {
+            NOREAD_5;
+
+            *imagePtr = ((*writePtr) >> 3);
+            console_uart->uart_write((void*) imagePtr++, 1);
+
+            NOREAD_5;
+
+            *imagePtr = (((*writePtr++)& 7) << 3);
+            *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
+            console_uart->uart_write((void*) imagePtr++, 1);
+
+            NOREAD_6;
+
+            *imagePtr = (*writePtr++) & 31;
+            console_uart->uart_write((void*) imagePtr++, 1);
+        }
+        for(int i = 0; i < 53; ++i) {
+            *imagePtr = ((*writePtr) >> 3);
+            console_uart->uart_write((void*) imagePtr++, 1);
+
+            *imagePtr = (((*writePtr++)& 7) << 3);
+            *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
+            console_uart->uart_write((void*) imagePtr++, 1);
+
+            *imagePtr = (*writePtr++) & 31;
+            console_uart->uart_write((void*) imagePtr++, 1);
+        }
+    }
+    for(int h = 92; h < 120; ++h) {
+        for(int w = 0; w < 64; ++w) {
+            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
+
+            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
+
+            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
+
+            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
+
+            while(!(_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK)));
+            (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
         }
     }
 }
-
-
-
-
