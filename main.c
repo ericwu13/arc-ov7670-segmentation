@@ -33,6 +33,9 @@
 #include "embARC_debug.h"
 #include "sccb.h"
 #include "ov7670.h"
+#include "seg.h"
+#include <stdlib.h>
+#include "seg_ref_inout.h"
 
 #define PIN_VSYNC 0
 #define PIN_PCLK 1
@@ -108,13 +111,23 @@
                 while((_arc_aux_read(0x80017e50) & (1 << PIN_PCLK))); \
                 (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
 
+
+
+
+
 DEV_GPIO_PTR clk_ptr = NULL;
 DEV_GPIO_PTR data_ptr = NULL;
 static int cnt = 0;
 
-static uint8_t image[64*64*3];
+
 
 static void captureImg(uint16_t width, uint16_t height);
+
+/* image global data */
+static uint8_t image[64*64*3];
+
+
+
 
 DEV_UART *console_uart;
 int main(void) {
@@ -217,7 +230,7 @@ int main(void) {
 
 static void captureImg(uint16_t width, uint16_t height) {
 
-    EMBARC_PRINTF("RDY");
+    // EMBARC_PRINTF("RDY");
     uint8_t buf[128];
 
     while(!(_arc_aux_read(0x80017e50) & (1 << PIN_VSYNC)));
@@ -245,46 +258,55 @@ static void captureImg(uint16_t width, uint16_t height) {
             READ_5;
 
             *imagePtr = ((*writePtr) >> 3);
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
 
             READ_5;
 
             *imagePtr = (((*writePtr++)& 7) << 3);
             *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
 
             READ_6;
 
             *imagePtr = (*writePtr++) & 31;
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
         }
         for(int w = 0; w < 3; ++w) {
             NOREAD_5;
 
             *imagePtr = ((*writePtr) >> 3);
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
 
             NOREAD_5;
 
             *imagePtr = (((*writePtr++)& 7) << 3);
             *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
 
             NOREAD_6;
 
             *imagePtr = (*writePtr++) & 31;
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
         }
         for(int i = 0; i < 53; ++i) {
             *imagePtr = ((*writePtr) >> 3);
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
 
             *imagePtr = (((*writePtr++)& 7) << 3);
             *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
 
             *imagePtr = (*writePtr++) & 31;
-            console_uart->uart_write((void*) imagePtr++, 1);
+            imagePtr++;
+            // console_uart->uart_write((void*) imagePtr++, 1);
         }
     }
     for(int h = 92; h < 120; ++h) {
@@ -310,4 +332,12 @@ static void captureImg(uint16_t width, uint16_t height) {
             (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
         }
     }
+    // float * pred_data = malloc(512  * sizeof(float));
+    segImage((unsigned char* )IN_IMG_12);
+    // float* pred_ptr = pred_data;
+    EMBARC_PRINTF("FUCK\n");
+    // for(int i = 0; i < 512; ++i) {
+    //     console_uart->uart_write((void*) pred_ptr++, 1);
+    // }
+    // free(pred_data);
 }
