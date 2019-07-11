@@ -20,6 +20,6 @@ typedef struct ref_to_pred_output_t {
 	float noise_to_quant_ratio; /**< Noise-to-quantization_err ratio (noise_vec_length)/(quant_err_vec_length+eps)  */
 } ref_to_pred_output;
 
-bool segImage(unsigned char* image);
+bool segImage(unsigned char* image, DEV_UART* console_uart);
 
 #endif

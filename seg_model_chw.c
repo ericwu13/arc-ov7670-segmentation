@@ -394,11 +394,11 @@ void seg_net(void) {
             //wt_data[idx] = (float)&L1_conv_wt[idx]/(2^CONV1_W_FRAQ);
             printf("%f, ", wt_data[idx]);
         }*/
-        size_t output_elements = mli_hlp_count_elem_num(&ir_tensor_X, 0);
+        // size_t output_elements = mli_hlp_count_elem_num(&ir_tensor_X, 0);
         // printf("elements: %d\n", output_elements);
-        float * out_data = malloc(output_elements * sizeof(float)); 
-        mli_tensor * out = &ir_tensor_X;
-        d_type * dst = (d_type *)out->data;
+        // float * out_data = malloc(output_elements * sizeof(float)); 
+        // mli_tensor * out = &ir_tensor_X;
+        // d_type * dst = (d_type *)out->data;
         //mli_hlp_fx_tensor_to_float(out, out_data, output_elements);
 
         ir_tensor_Z.el_params.fx.frac_bits = CONV1_OUT_FRAQ;

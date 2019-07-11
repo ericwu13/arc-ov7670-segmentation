@@ -35,7 +35,7 @@
 #include "ov7670.h"
 #include "seg.h"
 #include <stdlib.h>
-#include "seg_ref_inout.h"
+// #include "seg_ref_inout.h"
 
 #define PIN_VSYNC 0
 #define PIN_PCLK 1
@@ -126,20 +126,13 @@ static void captureImg(uint16_t width, uint16_t height);
 /* image global data */
 static uint8_t image[64*64*3];
 
-
-
-
 DEV_UART *console_uart;
 int main(void) {
     // config SCCB
     sccbInit(0);
     console_uart = uart_get_dev(CONSOLE_UART_ID);
     console_uart->uart_open(1500000);
-    /*unsigned char chr = 'w';
-    console_uart->uart_write((void *)&chr, 1);
-    chr = 'w';
-    console_uart->uart_write((void *)&chr, 1);*/
-
+    
     // config PWM
     io_arduino_config(ARDUINO_PIN_3, ARDUINO_PWM, IO_PINMUX_ENABLE);//pwm timer ch0
 	DEV_PWM_TIMER_CFG ch0_pwm_cfg;
@@ -150,7 +143,7 @@ int main(void) {
 	DEV_PWM_TIMER_PTR pwm_timer_test = pwm_timer_get_dev(DW_PWM_TIMER_0_ID);
 	pwm_timer_test->pwm_timer_open();
 	pwm_timer_test->pwm_timer_control(0, PWM_TIMER_CMD_SET_CFG, (void *)(&ch0_pwm_cfg));
-	// EMBARC_PRINTF("PWM init done\n");
+
     board_delay_ms(3000, 1);
 
     // other pins
@@ -158,16 +151,12 @@ int main(void) {
 
     io_arduino_config(ARDUINO_PIN_AD0, ARDUINO_GPIO, IO_PINMUX_ENABLE); // vsync
 	if (clk_ptr->gpio_open((1 << PIN_VSYNC)) == E_OPNED) {
-		//clk_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT,
-								//(void *)(1 << PIN_VSYNC));
 		clk_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT,
 								(void *)(1 << PIN_VSYNC));
 	}
 
     io_arduino_config(ARDUINO_PIN_AD1, ARDUINO_GPIO, IO_PINMUX_ENABLE); // pclk
 	if (clk_ptr->gpio_open((1 << PIN_PCLK)) == E_OPNED) {
-        //clk_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT,
-                //(void *)(1 << PIN_PCLK));
 		clk_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT,
 								(void *)(1 << PIN_PCLK));
 	}
@@ -211,26 +200,18 @@ int main(void) {
     setRes(QQVGA);
     setColorSpace(RGB565);
 
-    //EMBARC_PRINTF("Cam init done\n");
     writeReg(0x11, 9);
-    // writeReg(0x11, 10);
-
-    // board_delay_ms(10000, 0);
-    // writeReg(REG_COM8, 0);
-
-    //clk_ptr->gpio_control(GPIO_CMD_ENA_BIT_INT, (void *)(1 << PIN_VSYNC));
-    //clk_ptr->gpio_control(GPIO_CMD_ENA_BIT_INT, (void *)(1 << PIN_PCLK));
-    
 
     while(1) {
         captureImg(160*2, 120);
+        segImage(image, console_uart);
     }
 }
 
 
 static void captureImg(uint16_t width, uint16_t height) {
 
-    // EMBARC_PRINTF("RDY");
+    EMBARC_PRINTF("RDY");
     uint8_t buf[128];
 
     while(!(_arc_aux_read(0x80017e50) & (1 << PIN_VSYNC)));
@@ -258,55 +239,46 @@ static void captureImg(uint16_t width, uint16_t height) {
             READ_5;
 
             *imagePtr = ((*writePtr) >> 3);
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
 
             READ_5;
 
             *imagePtr = (((*writePtr++)& 7) << 3);
             *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
 
             READ_6;
 
             *imagePtr = (*writePtr++) & 31;
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
         }
         for(int w = 0; w < 3; ++w) {
             NOREAD_5;
 
             *imagePtr = ((*writePtr) >> 3);
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
 
             NOREAD_5;
 
             *imagePtr = (((*writePtr++)& 7) << 3);
             *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
 
             NOREAD_6;
 
             *imagePtr = (*writePtr++) & 31;
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
         }
         for(int i = 0; i < 53; ++i) {
             *imagePtr = ((*writePtr) >> 3);
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
 
             *imagePtr = (((*writePtr++)& 7) << 3);
             *imagePtr = (*imagePtr)  + ((*writePtr) >> 5);
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
 
             *imagePtr = (*writePtr++) & 31;
-            imagePtr++;
-            // console_uart->uart_write((void*) imagePtr++, 1);
+            console_uart->uart_write((void*) imagePtr++, 1);
         }
     }
     for(int h = 92; h < 120; ++h) {
@@ -332,12 +304,4 @@ static void captureImg(uint16_t width, uint16_t height) {
             (uint8_t)(_arc_aux_read(0x80017a50) & PIN_DATA);
         }
     }
-    // float * pred_data = malloc(512  * sizeof(float));
-    segImage((unsigned char* )IN_IMG_12);
-    // float* pred_ptr = pred_data;
-    EMBARC_PRINTF("FUCK\n");
-    // for(int i = 0; i < 512; ++i) {
-    //     console_uart->uart_write((void*) pred_ptr++, 1);
-    // }
-    // free(pred_data);
 }

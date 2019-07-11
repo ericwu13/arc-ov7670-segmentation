@@ -19,15 +19,35 @@ s = Serial(
     )
 
 def predDecoder():
+    img = np.zeros((64, 64, 3)).astype(np.uint8)
     cnt = 0;
     # print(s.readline())
+    pred = []
     while True:
         b = s.read(1)
         f = int.from_bytes(b, byteorder='little')
-        if f != 0:
-            print((f))
+        pred.append(f)
         cnt = cnt + 1
         if cnt == 512:
+            pred = np.array(pred, dtype=float)
+            # print(pred)
+            pred = torch.from_numpy(pred)
+            pred = pred.reshape(1,2,16,16)
+            res = F.interpolate(pred, size =(64,64), mode = 'bilinear', align_corners = True)
+            res = np.squeeze(res.data.max(1)[1].numpy(), axis = 0)
+            for idx, row in enumerate(res):
+                for jdx, e in enumerate(row):
+                    if e == 0:
+                        img[idx][jdx][2] = 255
+                        img[idx][jdx][1] = 255
+                        img[idx][jdx][0] = 255
+                    else:
+                        img[idx][jdx][2] = 0
+                        img[idx][jdx][1] = 255
+                        img[idx][jdx][0] = 0
+                    # print(e, end = " ")
+                # print()
+            return img
             break;
 
 
@@ -75,15 +95,16 @@ def main():
 
                 cnt = cnt + 1
                 if cnt == 64 * 64:
-                    predDecoder()
+                    seg = predDecoder()
                     break
-
+            cv2.imwrite('color_img.jpg', img)
             img2 = exposure.equalize_adapthist(img, clip_limit=0.03)
             img2 = cv2.resize(img2[:,:,:], (640, 640))
-
+            seg2 = cv2.resize(seg[:,:,:], (640,640))
             print("fps = {}".format(1./(time.time()-start)))
 
-            cv2.imshow("", img2)
+            cv2.imshow("Image", img2)
+            cv2.imshow("Seg", seg2)
             cv2.waitKey(1)
 
 if __name__ == "__main__":
