@@ -25,6 +25,7 @@ The front-vehicle detection system is trying to enhance dirver's awarenessby by 
 - [OV7670 Camera Module][2]
 - [Arduino]
 - [HC-05]
+- [Raspberry Pi]
 - [Micro-Robot Car]
 
 ### Required Software
@@ -50,9 +51,11 @@ The front-vehicle detection system is trying to enhance dirver's awarenessby by 
         GND    -> GND
         PWDN   -> GND
 
-2. Connect 1.8" TFT LCD screen to ARC spi interface
+2. Connect HC-05 to arduino and prepared the necessary micro-robot car
 
-3. Connect HC-05 to arduino and prepared the necessary micro-robot car
+3. Boot up ARC IoT Development Kit Board to start ML segmentation
+
+4. Boot up Raspberry Pi and connect it to ARC IoT Development Kit Board to transmitted results to the laptop via WIFI
 
 ## User Manual
 [1]: https://embarc.org/embarc_osp/doc/build/html/board/iotdk.html "ARC IoT Development Kit"
