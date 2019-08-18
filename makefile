@@ -1,13 +1,13 @@
 # Application name
-APPL ?= ov7670-segmentation 
+APPL ?= arc-ov7670--segmentation 
 BOARD = iotdk
-
 TOOLCHAIN = gnu
-#
+
+APPL_DEFINES = -DUSE_APPL_MEM_CONFIG -DV2DSP_XY -DMODEL_BIT_DEPTH=8
 # root dir of embARC
-#
 EMBARC_ROOT = ../../..
 
+LIB_SEL = embarc_mli
 MID_SEL = common
 
 # application source dirs
