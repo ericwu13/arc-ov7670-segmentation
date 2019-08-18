@@ -1,9 +1,9 @@
-# Magical Robot - Front-Vehicle Detection to Enhance Drivers' Awareness
+# iRobot - Front-Vehicle Detection to Enhance Drivers' Awareness
 
 This application, which implements a image semantic segmentation on ARC IoT board, is designed to show how to use OV7670 camera and Machine Learning in embARC to achieve front-vehicle detection to enhance drivers' awareness.
 
 * [Introduction](#introduction)
-	* [System Architecture](#system-architecture)
+	* [iRobot System Architecture](#system-architecture)
 * [Hardware and Software Setup](#hardware-and-software-setup)
 	* [Required Hardware](#required-hardware)
 	* [Required Software](#required-software)
@@ -12,8 +12,8 @@ This application, which implements a image semantic segmentation on ARC IoT boar
 	* [Before Running This Application](#before-running-this-application)
 	* [Run This Application](#run-this-application)
 
-## Introduction
-The front-vehicle detection system is trying to enhance dirver's awarenessby by utilizing image segmentation. We can segment the vehicles in front of the current driver and warn if necessary.
+## iRobot Introduction
+iRobot is trying to enhance dirver's awarenessby by utilizing image segmentation. We can segment the vehicles in front of the current driver and warn if necessary.
 
 
 ### System Architecture
@@ -58,6 +58,13 @@ The front-vehicle detection system is trying to enhance dirver's awarenessby by 
 4. Boot up Raspberry Pi and connect it to ARC IoT Development Kit Board to transmitted results to the laptop via WIFI
 
 ## User Manual
+### Before Running This Application
+* Download source code of iRobot from github
+* Prepare a Raspberry pi and download ***rpi_src*** directory in iRobot
+* Make sure all connection is correct again
+* Make sure iRobot is in the WIFI environment, including WIFI name, password in rpi_src
+* Check the switch of IoTdk board to boot up with the targted program
+
 [1]: https://embarc.org/embarc_osp/doc/build/html/board/iotdk.html "ARC IoT Development Kit"
 [2]: https://www.voti.nl/docs/OV7670.pdf "OV7670 Camera Module"
 [3]: ./doc/system.png "System Architecture"
