@@ -1,6 +1,6 @@
-# CareBaby -- Baby Caretaking Micro-Robot System
+# Magical Robot - Front-Vehicle Detection to Enhance Drivers' Awareness
 
-This application, which implements a image semantic segmentation on ARC IoT board, is designed to show how to use camera and Machine Learning in embARC to save your baby from entering dangerous section in your home, such as kitchen.
+This application, which implements a image semantic segmentation on ARC IoT board, is designed to show how to use OV7670 camera and Machine Learning in embARC to achieve front-vehicle detection to enhance drivers' awareness.
 
 * [Introduction](#introduction)
 	* [System Architecture](#system-architecture)
@@ -13,8 +13,7 @@ This application, which implements a image semantic segmentation on ARC IoT boar
 	* [Run This Application](#run-this-application)
 
 ## Introduction
-A hazard detection system to prevent the baby creeping to dangerous section in your house by utilizing image segmentation. We could track location of the baby in the home precisely
-and later alarm parents when the baby enters dangerous scenes.
+The front-vehicle detection system is trying to enhance dirver's awarenessby by utilizing image segmentation. We can segment the vehicles in front of the current driver and warn if necessary.
 
 
 ### System Architecture
@@ -26,7 +25,6 @@ and later alarm parents when the baby enters dangerous scenes.
 - [OV7670 Camera Module][2]
 - [Arduino]
 - [HC-05]
-- [1.8" TFT LCD Screen]
 - [Micro-Robot Car]
 
 ### Required Software
