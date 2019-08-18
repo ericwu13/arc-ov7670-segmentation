@@ -65,6 +65,11 @@ iRobot is trying to enhance dirver's awarenessby by utilizing image segmentation
 * Make sure iRobot is in the WIFI environment, including WIFI name, password in rpi_src
 * Check the switch of IoTdk board to boot up with the targted program
 
+### Run This Application
+* Download with USB-JTAG or use bootloader to boot the program.
+* After Rpi connect the wifi, the laptop should received the segmentation results in 0.5 fps
+
+
 [1]: https://embarc.org/embarc_osp/doc/build/html/board/iotdk.html "ARC IoT Development Kit"
 [2]: https://www.voti.nl/docs/OV7670.pdf "OV7670 Camera Module"
 [3]: ./doc/system.png "System Architecture"
