@@ -69,7 +69,7 @@ iRobot is trying to enhance dirver's awarenessby by utilizing image segmentation
 ### Run This Application
 * Type the below command into the terminal to download program into ARC IoTdk board
 
-        make run
+`make run`
 
 * (Optional) After Rpi connect the wifi, the laptop should received the segmentation results in 0.5 fps
 * After ARC connect with the laptop via USB, run cameraGrabber.py on the laptop to recieve the segmentation results in 0.5 fps
