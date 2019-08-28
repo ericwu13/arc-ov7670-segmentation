@@ -1,6 +1,6 @@
 # iRobot - Front-Vehicle Detection to Enhance Drivers' Awareness
 
-This application, which implements a image semantic segmentation on ARC IoT board, is designed to show how to use OV7670 camera and Machine Learning in embARC to achieve front-vehicle detection to enhance drivers' awareness.
+This application, which implements a image semantic segmentation on ARC IoT board, is designed to show how to use OV7670 camera and Machine Learning in embARC to achieve front-vehicle detection to enhance drivers' awareness. However, ultimately, we want to demonstrate that ARC processor can achieve scene understanding to do much more insteresting application in the future. For example, smart movement robot like household robot cleaner.
 
 * [Introduction](#introduction)
 	* [iRobot System Architecture](#system-architecture)
@@ -37,7 +37,7 @@ iRobot is trying to enhance dirver's awarenessby by utilizing image segmentation
 1. Connect OV7670 camera module to ARC following below instructions
 
         # ARC: 2x18 Pin Extension Header
-        SIOC   ->    I2C0_SCL (need pull-up 10K resistor)
+        SIOC   ->     I2C0_SCL (need pull-up 10K resistor)
         SIOD   ->    I2C0_SDA (need pull-up 10K resistor)
 
         # ARC: Arduino PIN
@@ -51,23 +51,26 @@ iRobot is trying to enhance dirver's awarenessby by utilizing image segmentation
         GND    -> GND
         PWDN   -> GND
 
-2. Connect HC-05 to arduino and prepared the necessary micro-robot car
+2. (Optional) Connect HC-05 to arduino and prepared the necessary micro-robot car
 
 3. Boot up ARC IoT Development Kit Board to start ML segmentation
 
-4. Boot up Raspberry Pi and connect it to ARC IoT Development Kit Board to transmitted results to the laptop via WIFI
+4. (Optional) Boot up Raspberry Pi and connect it to ARC IoT Development Kit Board to transmitted results to the laptop via WiFi
+
+5. Connect the USB port of ARC to the laptop to recieve image segmentation results
 
 ## User Manual
 ### Before Running This Application
 * Download source code of iRobot from github
-* Prepare a Raspberry pi and download ***rpi_src*** directory in iRobot
+* (Optional) Prepare a Raspberry pi and download ***rpi_src*** directory in iRobot
 * Make sure all connection is correct again
-* Make sure iRobot is in the WIFI environment, including WIFI name, password in rpi_src
-* Check the switch of IoTdk board to boot up with the targted program
+* (Optional) Make sure iRobot is in the WiFi environment, including WiFi name, password in rpi_src
 
 ### Run This Application
-* Download with USB-JTAG or use bootloader to boot the program.
-* After Rpi connect the wifi, the laptop should received the segmentation results in 0.5 fps
+* Type the below command into the terminal to download program into ARC IoTdk board
+        make run
+* (Optional) After Rpi connect the wifi, the laptop should received the segmentation results in 0.5 fps
+* After ARC connect with the laptop via USB, run cameraGrabber.py on the laptop to recieve the segmentation results in 0.5 fps
 
 
 [1]: https://embarc.org/embarc_osp/doc/build/html/board/iotdk.html "ARC IoT Development Kit"
