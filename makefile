@@ -11,11 +11,11 @@ LIB_SEL = embarc_mli
 MID_SEL = common
 
 # application source dirs
-APPL_CSRC_DIR = .
+APPL_CSRC_DIR = ./src
 APPL_ASMSRC_DIR = .
 
 # application include dirs
-APPL_INC_DIR = .
+APPL_INC_DIR = ./inc
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
