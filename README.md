@@ -65,11 +65,13 @@ iRobot is trying to enhance dirver's awarenessby by utilizing image segmentation
 * (Optional) Prepare a Raspberry pi and download ***rpi_src*** directory in iRobot
 * Make sure all connection is correct again
 * (Optional) Make sure iRobot is in the WiFi environment, including WiFi name, password in rpi_src
+* Please goto $ARC_ROOT/middleware/common/console_io.c and find xprintf_setup.
+* Change `console_uart->uart_open(1500000)` to make sure the baudrate is 1,000,000
 
 ### Run This Application
 * Type `make run` in the terminal to download program into ARC IoTdk board
 * (Optional) After Rpi connect the wifi, the laptop should received the segmentation results in 0.5 fps
-* After ARC connect with the laptop via USB, type `sudo python3 cameraGrabber.py` in the terminal to start recieving the segmentation results in 0.5 fps
+* After ARC connect with the laptop via USB, type `sudo python3 python/car_count.py` in the terminal to start recieving the segmentation results in 0.5 fps
 
 
 [1]: https://embarc.org/embarc_osp/doc/build/html/board/iotdk.html "ARC IoT Development Kit"
