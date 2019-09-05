@@ -74,6 +74,8 @@ iRobot is trying to enhance dirver's awarenessby by utilizing image segmentation
 * After ARC connect with the laptop via USB, type `sudo python3 python/cameraGrabber.py` in the terminal to start recieving the segmentation results in 0.5 fps
 * To test with the simple demo, type `sudo python3 python/car_count.py` or `sudo python3 python/danger_detect.py` in the terminal to start the applications
 
+### Demo Video Link
+* https://v.youku.com/v_show/id_XNDM0OTI5Mzk5Mg==.html?spm=a2h0j.11185381.listitem_page1.5~A
 
 [1]: https://embarc.org/embarc_osp/doc/build/html/board/iotdk.html "ARC IoT Development Kit"
 [2]: https://www.voti.nl/docs/OV7670.pdf "OV7670 Camera Module"
